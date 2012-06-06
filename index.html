@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> 
+<!--
+ * Copyright (c) 2012, Intel Corporation.
+ *
+ * This program is licensed under the terms and conditions of the
+ * Apache License, version 2.0.  The full text of the Apache License is at
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+-->
+<html> 
+  <head> 
+    <meta name="viewport" content="width=device-width target-densitydpi=device-dpi initial-scale=1 maximum-scale=1 user-scalable=0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title id="rabbit" class="i18n"></title> 
+    <link rel="stylesheet" type="text/css" href="css/rabbit.css"></link>
+    <link rel="stylesheet" type="text/css" href="css/license.css"></link>
+  </head> 
+ 
+  <body>
+     <div id="mainpage" class="container">
+
+       <div id="title_screen">
+         <div id="easy" class="i18n"></div>
+         <div id="medium" class="i18n"></div>
+         <div id="hard" class="i18n"></div>
+         <div id="help_button"></div>
+         <div id="settings_button"></div>
+       </div>
+
+       <div id="game_screen">
+         <div id="msg_right">
+           <div id="cutout" ></div>
+           <div id="msg_right_text" class="i18n"></div>
+         </div>
+         <div id="msg_left">
+           <div class="word1">Run,</div>
+           <div class="word2">RABBIT,</div>
+           <div class="word3">Run!</div>
+         </div>
+         <div id="fox_msg" class="i18n">
+           <div class="bubble_point"></div>
+         </div>
+         <div id="rabbit_msg" class="i18n">
+           <div class="bubble_point"></div>
+         </div>
+         <div id="board">
+           <div id="hint"></div>
+           <div id="new_game"></div>
+           <div id="high_score" class="i18n">
+             <div id="score"></div>
+           </div>
+           <div id="carrot_count"></div>
+           <div id="time_count"></div>
+           <div id="play_pause"></div>
+           <div id="grid"></div>
+         </div>
+         <div id="settings2_button"></div>
+       </div>
+
+       <div id="fox">
+         <div class="head">
+           <div class="eyes"></div>
+         </div>
+         <div class="tail"></div>
+       </div>
+       <div id="rabbit">
+         <div class="head">
+           <div class="eyes"></div>
+           <div class="whiskers"></div>
+         </div>
+         <div class="arm"></div>
+       </div>
+
+       <div id="help" class="dialog">
+         <div class="inner">
+           <div class="close"></div>
+           <div id="help_title" class="title i18n"></div>
+           <div id="help_point1" class="rule i18n"></div>
+           <div id="help_point2" class="rule i18n"></div>
+           <div id="help_point3" class="rule i18n"></div>
+           <div id="help_point4" class="rule i18n"></div>
+         </div>
+       </div>
+
+       <div id="settings" class="dialog">
+         <div class="inner">
+           <div class="close"></div>
+           <div id="settings_title" class="title i18n"></div>
+           <div class="settings_table">
+             <div class="setting">
+               <div id="settings_sounds" class="label i18n"></div>
+               <div id="settings_sounds_val" class="button state"></div>
+             </div>
+             <div class="setting">
+               <div id="settings_hints" class="label i18n"></div>
+               <div id="settings_hints_val" class="button state"></div>
+             </div>
+             <div class="setting">
+               <div id="settings_bestTime_easy" class="label i18n"></div>
+               <div id="settings_clear" class="button i18n"></div>
+             </div>
+             <div class="setting">
+               <div id="settings_bestTime_medium" class="label i18n"></div>
+               <div id="settings_clear" class="button i18n"></div>
+             </div>
+             <div class="setting">
+               <div id="settings_bestTime_hard" class="label i18n"></div>
+               <div id="settings_clear" class="button i18n"></div>
+             </div>
+           </div>
+         </div>
+       </div>
+       
+       <div id="newGame" class="dialog">
+         <div class="inner">
+           <div class="close"></div>
+           <div id="newGame_title" class="title i18n"></div>
+           <div class="buttonBox">
+             <div id="newGame_yes" class="button i18n"></div>
+             <div id="newGame_no" class="button i18n"></div>
+           </div>
+         </div>
+       </div>
+       <div id="licensebtnl" style="top: 270px; left: 990px;"> i </div>
+     </div>
+     <div id="licensepage" style="display: none">
+        <iframe id="licensetext" src="README.txt"></iframe>
+        <div id="licensebtnu" class="licensebtn">&uarr;</div>
+        <div id="licensebtnd" class="licensebtn">&darr;</div>
+        <div id="licensebtnq" class="licensebtn">Back</div>
+     </div>
+
+     <audio class="theme" loop="true" preload="auto"><source src="audio/Theme.ogg" type="audio/ogg" /></audio>
+     <audio class="buttonClick" preload="auto"><source src="audio/ButtonClick.ogg" type="audio/ogg" /></audio>
+     <audio class="hint" preload="auto"><source src="audio/Hint.ogg" type="audio/ogg" /></audio>
+     <audio class="crunch" preload="auto"><source src="audio/Carrot.ogg" type="audio/ogg" /></audio>
+     <audio class="lose" preload="auto"><source src="audio/Fox.ogg" type="audio/ogg" /></audio>
+     <audio class="rabbit" preload="auto"><source src="audio/RabbitSounds.ogg" type="audio/ogg" /></audio>
+     <audio class="win" preload="auto"><source src="audio/Win.ogg" type="audio/ogg" /></audio>
+
+     <script language="Javascript" src="js/getMessage.js" type="text/javascript"></script>
+     <script language="Javascript" src="js/rabbit.js" type="text/javascript"></script>
+     <script language="Javascript" src="js/sound.js" type="text/javascript"></script>
+     <script src="js/license.js"></script>
+  </body> 
+</html> 

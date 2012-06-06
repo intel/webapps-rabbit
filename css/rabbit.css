@@ -1,0 +1,928 @@
+/*
+ * Copyright (c) 2012, Intel Corporation.
+ *
+ * This program is licensed under the terms and conditions of the 
+ * Apache License, version 2.0.  The full text of the Apache License is at
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ */
+
+@font-face {
+    font-family: Sans;
+    src: url("../fonts/OpenSans-Regular.ttf");
+}
+
+@font-face {
+    font-family: SansItalic;
+    src: url("../fonts/OpenSans-CondLightItalic.ttf");
+}
+
+@font-face {
+    font-family: SansBold;
+    src: url("../fonts/OpenSans-Bold.ttf");
+}
+
+body {
+    margin: 0px;
+    -webkit-user-select: none;
+    background-color: rgb(164,155,139);
+    width: 1024px;
+    height: 600px;
+    display: -webkit-box;
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+    -webkit-box-orient: vertical;
+    box-shadow: 5px 5px 20px black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+}
+
+.container {
+    background-position: left top;
+    width: 1024px;
+    height: 600px;
+    background-color: rgb(138,61,20);
+    background-image: url("../images/hills.png");
+    background-repeat: no-repeat;
+    position: absolute;
+    overflow: hidden;
+    cursor: default;
+}
+
+/* 800 x 480 */
+@media (orientation: landscape) {
+  body { top: 50%; left: 50%; -webkit-transform: translate(-50%, -50%) scale(0.78125, 0.8); }
+}
+/* 1024 x 600 */
+@media (min-width: 1024px) and (min-height: 600px) and (orientation: landscape) {
+  body { top: 50%; left: 50%; -webkit-transform: translate(-50%, -50%); }
+}
+/* 1280 x 720 */
+@media (min-width: 1280px) and (min-height: 720px) and (orientation: landscape) {
+  body { top: 50%; left: 50%; -webkit-transform: translate(-50%, -50%) scale(1.25, 1.199); }
+}
+
+/* 480 x 800 */
+@media (orientation: portrait) {
+  body { top: 0%; left: 0%; -webkit-transform: translate(-50%, -50%) rotate(90deg) scale(0.8, 0.78125); }
+}
+/* 600 x 1024 */
+@media (min-width: 600px) and (min-height: 1024px) and (orientation: portrait) {
+  body { top: 0%; left: 0%; -webkit-transform: translate(-50%, -50%) rotate(90deg) translate(50%, -50%); }
+}
+/* 720 x 1230 */
+@media (min-width: 720px) and (min-height: 1230px) and (orientation: portrait) {
+  body { top: 0%; left: 0%; -webkit-transform: translate(-50%, -50%) rotate(90deg) scale(1.2, 1.199) translate(50%, -50%); }
+}
+/* 720 x 1280 */
+@media (min-width: 720px) and (min-height: 1280px) and (orientation: portrait) {
+  body { top: 0%; left: 0%; -webkit-transform: translate(-50%, -50%) rotate(90deg) scale(1.25, 1.199) translate(50%, -50%); }
+}
+
+#game_screen,
+#title_screen {
+    position:absolute;
+    top: -100%;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    -webkit-transition: opacity 2s 0.25s;
+}
+
+#game_screen.shown,
+#title_screen.shown {
+    top: 0%;
+    opacity: 1;
+}
+
+#title_screen {
+    background-image: url("../images/TitleLogo.png");
+    background-repeat: no-repeat;
+    background-position: center 15px;
+}
+
+#title_screen #easy,
+#title_screen #medium,
+#title_screen #hard {
+    width: 170px;
+    height: 99px;
+    line-height: 99px;
+    position: absolute;
+    left: 460px;
+    background-image: url("../images/button1.png");
+    background-size: 100% 100%;
+    font-family: SansBold;
+    text-align: center;
+    color: white;
+    font-size: 60px;
+    z-index: 1;
+}
+
+#title_screen #easy {
+    top: 218px;
+}
+
+#title_screen #medium {
+    top: 338px;
+    background-image: url("../images/button2.png");
+    font-size: 36px;
+}
+
+#title_screen #hard {
+    top: 460px;
+}
+
+#title_screen #easy.pressed,
+#title_screen #hard.pressed,
+#title_screen #medium.pressed {
+    width: 162px;
+    height: 93px;
+    line-height: 95px;
+    left: 464px;
+    background-image: url("../images/button1_pressed.png");
+    font-size: 58px;
+}
+
+#title_screen #easy.pressed {
+    top: 221px;
+}
+
+#title_screen #medium.pressed {
+    background-image: url("../images/button2_pressed.png");
+    top: 341px;
+    font-size: 34px;
+}
+
+#title_screen #hard.pressed {
+    top: 463px;
+}
+
+
+#title_screen #settings_button,
+#title_screen #help_button {
+    width: 51px;
+    height: 51px;
+    border-radius: 26px;
+    position: absolute;
+    bottom: 25px;
+    background-size: 100% 100%;
+    background-color: rgb(107,60,34);
+    background-position: 0px 0px;
+    z-index: 10;
+}
+
+#title_screen #help_button {
+    background-image: url("../images/RulesButton.png");
+    left: 25px;
+}
+
+#title_screen #settings_button {
+    background-image: url("../images/SettingsButton.png");
+    right: 25px;
+}
+
+#title_screen #settings_button.pressed,
+#title_screen #help_button.pressed {
+    width: 47px;
+    height: 47px;
+    bottom: 27px;
+    background-color: rgb(63,28,5);
+}
+
+#title_screen #settings_button.pressed {
+    right: 27px;
+}
+
+#title_screen #help_button.pressed {
+    left: 27px;
+}
+
+.dialog {
+    position: absolute;
+    top: -100%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0);
+    color: white;
+    font-family: Sans;
+    -webkit-transition: background-color 0.5s;
+}
+
+.dialog.shown {
+    top: 0%;
+    background-color: rgba(0,0,0,.33);
+    z-index: 99;
+}
+
+.dialog.fadeOut {
+    top: 0%;
+    background-color: rgba(0,0,0,0);
+    z-index: 99;
+}
+
+.dialog .inner {
+    position: absolute;
+    top: 50%;
+    left : 50%;
+    -webkit-transform: translate(-50%, -50%) scale(.5, .5);
+    border: 20px solid #173901;
+    background-color: rgb(138,61,20);
+    min-width: 40%;
+    padding: 10px;
+
+    opacity: 0;
+    -webkit-transition: opacity 0.5s,
+                        -webkit-transform 0.5s;
+}
+
+.dialog.shown .inner {
+    -webkit-transform: translate(-50%, -50%) scale(1, 1);
+    opacity: 1;
+}
+
+.dialog .inner .close {
+    position: absolute;
+    top: -35px;
+    right : -35px;
+    width: 51px;
+    height: 51px;
+    background-image: url("../images/closeButton.png");
+    background-size: 100% 100%;
+}
+
+.dialog .inner .close.pressed {
+    top: -33px;
+    right : -33px;
+    width: 47px;
+    height: 47px;
+    background-image: url("../images/closeButton_pressed.png");
+}
+
+#game_screen #board {
+    background-color: #173901;
+    width: 40%;
+    height: 100%;
+    position: absolute;
+    top: 0%;
+    left: 30%;
+}
+
+#msg_left, #msg_right {
+    position: absolute;
+    color: white;
+    padding: .25em 1em;
+    width: 30%;
+    box-sizing: border-box;
+}
+
+#msg_left {
+    bottom: 0px;
+    left: 0px;
+    height: 230px;
+}
+
+#msg_left .word1 {
+    font-family: Sans;
+    font-size: 70px;
+    line-height: 1em;
+}
+
+#msg_left .word2 {
+    font-family: SansBold;
+    font-size: 60px;
+    line-height: 1em;
+}
+
+#msg_left .word3 {
+    font-family: Sans;
+    font-size: 85px;
+    line-height: 1em;
+}
+
+#msg_right {
+    top: 0px;
+    left: 70%;
+    height: 4.2em;
+    font-family: Sans;
+    line-height: 1em;
+    font-size: 50px;
+    padding: 0.1em .5em;
+}
+
+#msg_right #cutout {
+    float: right;
+    width: 46px;
+    height: 46px;
+}
+
+#settings2_button {
+    width: 60px;
+    height: 60px;
+    border-radius: 60px;
+    border: 8px solid rgba(227,215,192,1);
+    background-color: rgb(107,60,34);
+    background-size: 51px 51px;
+    background-image: url("../images/SettingsButton.png");
+    background-repeat: no-repeat;
+    background-position: 5px 5px;
+    position: absolute;
+    right: -17px;
+    top: -17px;
+    z-index: 10;
+}
+
+#settings2_button.pressed {
+    width: 56px;
+    height: 56px;
+    right: -17px;
+    top: -17px;
+    background-color: rgb(63,28,5);
+    background-size: 47px 47px;
+    background-position: 4px 6px;
+}
+
+#fox, #fox .tail, #rabbit {
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-clip: padding-box;
+    border-color: rgba(227,215,192,0);
+    border-style: solid;
+    border-width: 0px;
+    -webkit-transition: width 1s, height 1s, left 1s, right 1s, 
+                        top 1s, bottom 1s, 
+                        background-color 1s, 
+                        background-position 1s, 
+                        border-width 1s, border-color 1s,
+                        -webkit-transform .75s ease-in-out;
+}
+
+#fox,
+#fox .tail {
+    background-image: url("../images/foxBody.png");
+    background-size: 175px 214px;
+    background-position: 164px 100px;
+    width: 400px;
+    height: 400px;
+    border-radius: 200px;
+    position: absolute;
+}
+
+#fox { 
+    bottom: -50px;
+    left: 15px;
+}
+
+#fox .tail {
+    background-image: url("../images/foxTail.png");
+    background-size: 175px 176px;
+    background-position: 1px 127px;
+    -webkit-transform-origin: 165px 295px;
+}
+
+#fox:not(.game) .tail.wag {
+    -webkit-transform: rotate(15deg);
+}
+
+#fox .head {
+    background-image: url("../images/foxHead.png");
+    width: 176px;
+    height: 200px;
+    position: absolute;
+    left: 177px;
+    bottom: 190px;
+    -webkit-transform-origin: 90px 100px;
+    -webkit-transition: left 1s, bottom 1s, -webkit-transform 1s;
+}
+
+#fox .head.nod {
+    -webkit-transform: rotate(5deg);
+}
+
+#fox .eyes {
+    background-image: url("../images/foxEyes_right.png");
+    width: 92px;
+    height: 22px;
+    position: absolute;
+    left: 57px;
+    bottom: 106px;
+}
+
+#fox .eyes.left {
+    background-image: url("../images/foxEyes_left.png");
+    bottom: 104px;
+}
+
+#fox .eyes.closed {
+    background-image: url("../images/foxEyes_closed.png");
+    bottom: 100px;
+}
+
+#fox .eyes.big {
+    background-image: url("../images/foxEyes_big.png");
+    width: 77px;
+    height: 25px;
+    left: 73px;
+}
+
+#fox .eyes.mad {
+    background-image: url("../images/foxEyes_mad.png");
+    width: 94px;
+    height: 17px;
+    position: absolute;
+    left: 57px;
+    bottom: 106px;
+}
+
+#rabbit {
+    background-image: url("../images/rabbitBody.png");
+    background-size: 154px 170px;
+    background-position: 83px 122px;
+    width: 320px;
+    height: 320px;
+    border-radius: 160px;
+    position: absolute;
+    right: 70px;
+    bottom: 2px;
+}
+
+
+#rabbit .head {
+    background-image: url("../images/rabbitHead.png");
+    width: 127px;
+    height: 173px;
+    position: absolute;
+    right: 123px;
+    bottom: 129px;
+    -webkit-transition: right 1s, bottom 1s;
+}
+
+#rabbit .head.chomp {
+    bottom: 124px;
+}
+
+#rabbit .whiskers {
+    background-image: url("../images/rabbitWhiskers.png");
+    width: 184px;
+    height: 74px;
+    position: absolute;
+    right: -32px;
+    bottom: -6px;
+    -webkit-transform-origin: 76px 18px;
+    -webkit-transition: -webkit-transform 0.15s;
+}
+
+#rabbit .whiskers.twitch1 {
+    -webkit-transform: rotate(5deg);
+}
+
+#rabbit .whiskers.twitch2 {
+    -webkit-transform: rotate(-5deg);
+}
+
+#rabbit .arm {
+    background-image: url("../images/rabbitArm.png");
+    width: 88px;
+    height: 77px;
+    position: absolute;
+    right: 136px;
+    bottom: 67px;
+    -webkit-transform-origin: 76px 36px;
+    -webkit-transition: right 1s, bottom 1s, -webkit-transform .75s;
+    -webkit-transform: rotate(-13deg);
+}
+
+#rabbit .arm.raise {
+    -webkit-transform: rotate(-3deg);
+}
+
+#rabbit .eyes {
+    background-image: url("../images/rabbitEyes.png");
+    width: 54px;
+    height: 32px;
+    position: absolute;
+    right: 48px;
+    bottom: 78px;
+}
+
+#rabbit .eyes.closed {
+    background-image: url("../images/rabbitEyes_closed.png");
+    width: 54px;
+    height: 25px;
+}
+
+#rabbit .eyes.mad {
+    background-image: url("../images/rabbitEyes_mad.png");
+    width: 49px;
+    height: 24px;
+}
+
+#rabbit.game,
+#fox.game {
+    background-color: rgb(107,60,34);
+    border-color: rgba(227,215,192,1);
+    border-width: 12px;
+}
+
+#fox.game {
+    width: 254px;
+    height: 254px;
+    bottom: 308px;
+    background-position: 25px 132px;
+}
+
+#fox.game .head {
+    left: 38px;
+    bottom: 11px;
+}
+
+#fox.game .tail {
+    width: 254px;
+    height: 254px;
+    background-position: -140px 157px;
+}
+
+#rabbit.game {
+    width: 244px;
+    height: 244px;
+    right: 20px;
+    bottom: 53px;
+    background-position: 54px 122px;
+}
+
+#rabbit.game .head {
+    right: 74px;
+    bottom: 51px;
+}
+
+#rabbit.game .head.chomp {
+    bottom: 46px;
+}
+
+#rabbit.game .arm {
+    right: 89px;
+    bottom: -9px;
+}
+
+@-webkit-keyframes msg_jiggle_y {
+    0% {line-height: 75px;}
+   25% {line-height: 73px;}
+   50% {line-height: 75px;}
+   75% {line-height: 77px;}
+  100% {line-height: 75px;}
+}
+
+@-webkit-keyframes msg_jiggle_x {
+    0% {padding: 0px 20px 0px 20px;}
+   33% {padding: 0px 21px 0px 19px;}
+   66% {padding: 0px 19px 0px 21px;}
+  100% {padding: 0px 20px 0px 20px;}
+}
+
+#fox_msg, #rabbit_msg {
+    color: white;
+    font-family: SansBold;
+    font-size: 40px;
+    position: absolute;
+    border-radius: 20px;
+
+    height: 75px;
+    line-height: 75px;
+    padding: 0px 20px;
+    -webkit-animation: msg_jiggle_y .25s infinite; /*, msg_jiggle_x .33s infinite;*/
+}
+
+#fox_msg {
+    background-color: rgb(232,154,45);
+    top: 300px;
+    right: 727px;
+    z-index: 10;
+    text-align: right;
+    display: none;
+}
+
+#fox_msg .bubble_point,
+#rabbit_msg .bubble_point {
+    background-size: 100% 100%;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+}
+
+#fox_msg .bubble_point {
+    background-image: url("../images/FoxMsgBubble.png");
+    right: 30px;
+    bottom: 100%;
+}
+
+#rabbit_msg {
+    background-color: rgb(129,129,167);
+    bottom: 290px;
+    left: 727px;
+    z-index: 10;
+    text-align: left;
+    display: none;
+}
+
+#rabbit_msg .bubble_point {
+    background-image: url("../images/RabbitMsgBubble.png");
+    left: 30px;
+    top: 100%;
+}
+
+.lose #fox_msg {
+    display: block;
+}
+
+.win #rabbit_msg {
+    display: block;
+}
+
+#hint, #new_game, #play_pause {
+    z-index: 10;
+    background-color: white;
+    position: absolute;
+}
+
+#hint {
+    width: 36px;
+    height: 44px;
+    top: 11px;
+    left: 10px;
+    -webkit-mask-image: url("../images/hint.png");
+}
+
+#new_game {
+    width: 70px;
+    height: 70px;
+    top: 0px;
+    right: 0px;
+    -webkit-mask-size: 40px 34px;
+    -webkit-mask-position: center center;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-image: url("../images/newGame.png");
+    background-color: white;
+}
+
+@-webkit-keyframes new_game_pulse {
+    0% {background-size: 40px 34px, 0px 0px;}
+   100% {background-size: 40px 34px, 70px 70px;}
+}
+
+.win #new_game,
+.lose #new_game {
+    -webkit-mask-image: none;
+    background-color: rgb(23,57,1);
+    background-size: 40px 34px, 0px 0px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-image: url("../images/newGame.png"), 
+                      url("../images/newGame_highlight.png");
+    -webkit-animation: new_game_pulse 1s infinite alternate;
+}
+
+#play_pause {
+    width: 24px;
+    height: 34px;
+    bottom: 19px;
+    right: 192px;
+    -webkit-mask-image: url("../images/play.png");
+}
+
+#play_pause.playing {
+    -webkit-mask-image: url("../images/pause.png");
+}
+
+.lose #play_pause,
+.win #play_pause,
+.lose #hint,
+.win #hint,
+#play_pause.pressed,
+#new_game.pressed,
+#hint.pressed {
+    background-color: rgba(255,255,255,.5);
+}
+
+#time_count,
+#carrot_count,
+#high_score,
+#score {
+    background-color: rgb(138,61,20);
+    height: 50px;
+    line-height: 50px;
+    color: white;
+    position: absolute;
+}
+
+#high_score {
+    width: 60%;
+    top: 11px;
+    left: 20%;
+    text-align: left;
+    font-family: Sans;
+    font-size: 24px;
+    padding-left: 10px;
+    display: inline-block;
+}
+
+#score {
+    font-family: Sans;
+    font-size: 36px;
+    text-align: right;
+    right: 10px;
+    top: 0px;
+}
+
+#time_count,
+#carrot_count {
+    width: 32%;
+    bottom: 11px;
+    text-align: right;
+    background-repeat: no-repeat;
+    font-family: Sans;
+    font-size: 36px;
+    padding: 0px 5px;
+    background-size: auto 40px;
+    background-position: 5px center;
+}
+
+#carrot_count {
+    left: 10px;
+    background-image: url("../images/CarrotFlag-large.png");
+}
+
+#time_count {
+    right: 10px;
+    background-image: url("../images/Timer.png");
+}
+
+#grid {
+    width: 390px;
+    height: 456px;
+    position: absolute;
+    top: 70px;
+    left: 8px;
+}
+
+.cell {
+    position: absolute;
+    background-color: rgb(49,167,29);
+    background-size: auto 90%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    border: 2px solid rgba(23,57,1,.15);
+    width: 40px;
+    height: 39px;
+    line-height: 35px;
+    text-align: center;
+    font-family: SansBold;
+    font-size:  30px;
+    color: transparent;
+    z-index: 0;
+    box-sizing: border-box;
+}
+
+.cell.highlight {
+    outline: 3px solid rgba(255,0,0,.5);
+    z-index: 99;
+}
+
+.cell.hidden {
+    background-color: rgb(43,106,2);
+    border: 2px solid #173901;
+    z-index: 1;
+}
+
+.cell.hidden.pressed {
+    background-color: rgb(23,57,1);
+}
+
+
+@-webkit-keyframes hint_anim {
+      0% {-webkit-box-shadow: 0 0 0px 0px rgba(255,255,255,1)}
+    100% {-webkit-box-shadow: 0 0 10px 10px rgba(255,255,255,0)}
+}
+
+.cell.hint {
+    z-index: 10;
+    -webkit-animation: hint_anim 1s 3;
+}
+
+.debug .cell,
+.cell:not(.hidden) {
+    color: rgba(255,255,255,.6);
+    -webkit-text-stroke: 1px rgba(23,57,1,.25);
+}
+
+
+.debug .cell.hasFox,
+.win .cell.hasFox, .lose .cell.hasFox,
+.cell.hasFox:not(.hidden) {
+    background-image: url("../images/CellFox.png");
+}
+
+.debug .cell.hasCarrot,
+.win .cell.hasCarrot, .lose .cell.hasCarrot,
+.cell.hasCarrot:not(.hidden) {
+    background-image: url("../images/CellCarrot.png");
+}
+
+ .cell.hasWall0,
+.win .cell.hasWall0,
+.lose .cell.hasWall0,
+.cell.hasWall0:not(.hidden) {
+    border-top: 5px solid rgb(107,60,34);
+}
+
+ .cell.hasWall1,
+.win .cell.hasWall1,
+.lose .cell.hasWall1,
+.cell.hasWall1:not(.hidden) {
+    border-right: 5px solid rgb(107,60,34);
+}
+
+ .cell.hasWall2,
+.win .cell.hasWall2,
+.lose .cell.hasWall2,
+.cell.hasWall2:not(.hidden) {
+    border-bottom: 5px solid rgb(107,60,34);
+}
+
+ .cell.hasWall3,
+.win .cell.hasWall3,
+.lose .cell.hasWall3,
+.cell.hasWall3:not(.hidden) {
+    border-left: 5px solid rgb(107,60,34);
+}
+
+.dialog .title {
+    font-size: 36px;
+    font-family: SansBold;
+    text-align: center;
+}
+
+.dialog .rule {
+    font-size: 20px;
+    background-image: url("../images/SettingsButton.png");
+    background-position: 0em .75em;
+    background-size: 10px 10px;
+    background-repeat: no-repeat;
+    padding: .25em 0px .25em 20px;
+}
+
+.dialog .settings_table {
+    display: table;
+    position: relative;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    border-collapse: separate;
+    border-spacing: 10px;
+}
+
+.dialog .setting {
+    font-size: 24px;
+    text-align: right;
+    margin: 0px auto;
+    display: table-row;
+}
+
+.setting .label,
+.setting .button {
+    display: table-cell;
+    padding: 0px 10px;
+    vertical-align: middle;    
+}
+
+.buttonBox {
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+    -webkit-box-align: stretch;
+    -webkit-box-pack: center;
+}
+
+.dialog .button {
+    font-size: 28px;
+    font-family: SansBold;
+    text-align: center;
+    border-width: 10px 5px 10px 5px;
+    -webkit-border-image: url("../images/button1.png") 10 5 10 5 stretch stretch;
+    padding: 0em 0.5em;
+    margin: 5px 15px;
+}
+
+.setting .button.state {
+    -webkit-border-image: url("../images/button1_active.png") 10 5 10 5 stretch stretch;
+}
+
+.setting .button.state.active:not(.pressed) {
+    -webkit-border-image: url("../images/button1.png") 10 5 10 5  stretch;
+    color: white;
+}
+
+.dialog .button.pressed,
+.setting .button.pressed {
+    -webkit-border-image: url("../images/button1_pressed.png") 10 5 10 5 stretch;
+}

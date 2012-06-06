@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Name=Run, Rabbit, Run!
+Comment=Find Carrots!  Dodge Foxes!
+GenericName=Run, Rabbit, Run!
+Exec=chromium-browser --enable-plugins --enable-extensions --enable-user-scripts --enable-printing --enable-sync --use-gl=egl --ignore-gpu-blacklist --auto-ssl-client-auth %U --app-id=amoghkkfcnehdmncicoalopagkphdjaf --load-extension=/usr/share/rabbit/ --no-first-run
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Icon=rabbit
+Categories=Game;
+StartupWMClass=Chromium
+StartupNotify=true
