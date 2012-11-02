@@ -1,6 +1,7 @@
 Run Rabbit Run is a fun grid game where the rabbit finds and eats the carrots dodging the foxes.
 
 Author: Benjamin Drucker <benjamin.t.drucker@intel.com>
+Owner: Todd Brandt <todd.e.brandt@intel.com>
 
 Technical Details: This application is written using HTML5/css3 
 and is distributed under Apache2.0 license. 
