@@ -154,7 +154,7 @@ module.exports = function (grunt) {
       install: {
         action: 'install',
         remoteFiles: {
-          pattern: '/home/developer/rabbit*.wgt',
+          pattern: '/home/developer/Rabbit*.wgt',
           filter: 'latest'
         }
       },

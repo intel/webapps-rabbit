@@ -1148,4 +1148,6 @@ window.addEventListener("load", function (event)
     if (useSounds) {
         themeSound.play();
     }
+
+    scaleBody(document.getElementsByTagName("body")[0], 720);
 }, false);
