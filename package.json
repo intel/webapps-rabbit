@@ -1,14 +1,14 @@
 {
-  "name": "Annex",
+  "name": "Rabbit",
   "version": "0.0.1",
-  "description": "Reversi/Othello",
+  "description": "Fun grid game where the rabbit finds and eats the carrots dodging the foxes.",
   "main": "app/index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "https",
-    "url": "https://github.com/01org/webapps-annex"
+    "url": "https://github.com/01org/webapps-rabbit"
   },
   "author": "Todd Brandt <todd.e.brandt@intel.com>",
   "license": "APL 2.0",

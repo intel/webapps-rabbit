@@ -32,8 +32,11 @@ module.exports = function (grunt) {
     uglify: {
       dist: {
         files: {
-          'build/app/js/annex.js': ['app/js/annex.js'],
-          'build/app/js/scaleBody.js': ['app/js/scaleBody.js']
+          'build/app/js/getMessage.js': ['app/js/getMessage.js'],
+          'build/app/js/license.js': ['app/js/license.js'],
+          'build/app/js/rabbit.js': ['app/js/rabbit.js'],
+          'build/app/js/scaleBody.js': ['app/js/scaleBody.js'],
+          'build/app/js/sound.js': ['app/js/sound.js']
         }
       }
     },
@@ -42,8 +45,8 @@ module.exports = function (grunt) {
     cssmin: {
       dist: {
         files: {
-          'build/app/css/annex.css': ['app/css/annex.css'],
-          'build/app/css/i18n.css': ['app/css/i18n.css']
+          'build/app/css/rabbit.css': ['app/css/rabbit.css'],
+          'build/app/css/license.css': ['app/css/license.css']
         }
       }
     },
@@ -151,7 +154,7 @@ module.exports = function (grunt) {
       install: {
         action: 'install',
         remoteFiles: {
-          pattern: '/home/developer/Annex*.wgt',
+          pattern: '/home/developer/rabbit*.wgt',
           filter: 'latest'
         }
       },

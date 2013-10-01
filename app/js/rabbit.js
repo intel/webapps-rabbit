@@ -548,7 +548,7 @@ function getTimeString (time)
 }
 
 var timeCountElem;
-function setTime (time) 
+function setTime (time)
 {
     timeCountElem = timeCountElem || document.getElementById("time_count");
     localStorage.rrr_time = time;

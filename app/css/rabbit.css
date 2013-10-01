@@ -9,17 +9,17 @@
 
 @font-face {
     font-family: Sans;
-    src: url("../fonts/OpenSans-Regular.ttf");
+    src: url("../lib/open-sans/OpenSans-Regular.ttf");
 }
 
 @font-face {
     font-family: SansItalic;
-    src: url("../fonts/OpenSans-CondLightItalic.ttf");
+    src: url("../lib/open-sans/OpenSans-CondLightItalic.ttf");
 }
 
 @font-face {
     font-family: SansBold;
-    src: url("../fonts/OpenSans-Bold.ttf");
+    src: url("../lib/open-sans/OpenSans-Bold.ttf");
 }
 
 body {
