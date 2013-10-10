@@ -23,11 +23,11 @@ function initGetMessage ()
         request.send();
         var requestStr = request.responseText;
         try {
-	    messages = JSON.parse(requestStr);
+	        messages = JSON.parse(requestStr);
             window.getMessage = fallbackGetMessage;
         }
         catch(err) {
-	    console.log("Unable to read fallback messages from _locales/en_US/messages.json");
+	        console.log("Unable to read fallback messages from _locales/en_US/messages.json");
             window.getMessage = errorGetMessage;
         }
     }

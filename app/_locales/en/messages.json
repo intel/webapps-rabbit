@@ -1,5 +1,5 @@
 {
-    "appName": {"message": "Run, Rabbit, Run!", 
+    "appName": {"message": "Run, Rabbit, Run!",
                 "description": "Name of the game.  Probably should not be translated"},
     "appDescription": {"message": "Find Carrots!  Dodge Foxes!"},
 
