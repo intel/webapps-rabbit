@@ -3,6 +3,7 @@
                 "description": "Name of the game.  Probably should not be translated"},
     "appDescription": {"message": "Find Carrots!  Dodge Foxes!"},
 
+    "rabbit":   {"message": "Rabbit",   "description": "App title"},
     "easy":   {"message": "Easy",   "description": "Lowest difficulty game level"},
     "medium": {"message": "Medium", "description": "Intermediate difficulty game level"},
     "hard":   {"message": "Hard",   "description": "Most difficult game level"},
