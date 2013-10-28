@@ -7,6 +7,8 @@
     "components"
   ],
   "dependencies": {
-    "open-sans": "http://www.fontsquirrel.com/fonts/download/open-sans"
+    "open-sans-condlightitalic": "http://themes.googleusercontent.com/static/fonts/opensanscondensed/v6/jIXlqT1WKafUSwj6s9AzV6XnXbwdDC8wAz6IIzmCDUP3rGVtsTkPsbDajuO5ueQw.woff",
+    "open-sans-bold": "http://themes.googleusercontent.com/static/fonts/opensans/v6/k3k702ZOKiLJc3WVjuplzHhCUOGz7vYGh680lGh-uXM.woff",
+    "open-sans": "http://themes.googleusercontent.com/static/fonts/opensans/v6/cJZKeOuBrn4kERxqtaUH3T8E0i7KZn-EPnyo3HZu7kw.woff"
   }
 }
