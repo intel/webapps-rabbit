@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2012, Intel Corporation.
  *
- * This program is licensed under the terms and conditions of the 
+ * This program is licensed under the terms and conditions of the
  * Apache License, version 2.0.  The full text of the Apache License is at
  * http://www.apache.org/licenses/LICENSE-2.0
  *
@@ -123,14 +123,14 @@ Rabbit.Grid = function (level, setup, state)
         if (thisCell.count > 0) {
             queueCell(startX, startY);
             /*
-	    if (!cellsToShow) {
-	        win(startX, startY);
-	    }
-	    else {
-	        doShow(startX, startY);
-	    }
+            if (!cellsToShow) {
+                win(startX, startY);
+            }
+            else {
+                doShow(startX, startY);
+            }
             */
-    	    return;
+            return;
         }
 
         var stack = [];
@@ -141,10 +141,10 @@ Rabbit.Grid = function (level, setup, state)
             thisCell = stack.pop();
             x = thisCell.x;
             y1 = thisCell.y;
-            
+
             while (y1 > 0) {
                 thisCell = _setups.data[x][y1];
-                if (!_states[x][y1-1].hidden || 
+                if (!_states[x][y1-1].hidden ||
                     (_setups.data[x][y1-1].count > 0) ||
                     thisCell.walls[0]) {
                     break;
@@ -164,8 +164,8 @@ Rabbit.Grid = function (level, setup, state)
 
                 if (x > 0) {
                     var leftCell = _setups.data[x-1][y1];
-	            var leftNeedsShowing = (_states[x-1][y1].hidden && 
-                                            (leftCell.count === 0) && 
+                    var leftNeedsShowing = (_states[x-1][y1].hidden &&
+                                            (leftCell.count === 0) &&
                                             (thisCell.walls[3] === false));
 
                     if (leftNeedsShowing && (!spanLeft || leftCell.walls[0])) {
@@ -176,10 +176,10 @@ Rabbit.Grid = function (level, setup, state)
                         spanLeft = false;
                     }
                 }
-                    
-	        if (x+1 < _numX) {
+
+                if (x+1 < _numX) {
                     var rightCell = _setups.data[x+1][y1];
-	            var rightNeedsShowing = (_states[x+1][y1].hidden && 
+                    var rightNeedsShowing = (_states[x+1][y1].hidden &&
                                              (rightCell.count === 0) &&
                                              (thisCell.walls[1] === false));
                     if (rightNeedsShowing && (!spanRight || rightCell.walls[0])) {
@@ -232,11 +232,11 @@ Rabbit.Grid = function (level, setup, state)
     function showQueue (x, y)
     {
         toShowList.sort(function(a,b) {
-	    var aDist = Math.pow(Math.abs(a.x-x),2) + Math.pow(Math.abs(a.y-y),2);
-	    var bDist = Math.pow(Math.abs(b.x-x),2) + Math.pow(Math.abs(b.y-y),2);
-	    if (aDist == bDist) return 0;
-	    else if (aDist < bDist) return 1;
-	    else return -1;
+            var aDist = Math.pow(Math.abs(a.x-x),2) + Math.pow(Math.abs(a.y-y),2);
+            var bDist = Math.pow(Math.abs(b.x-x),2) + Math.pow(Math.abs(b.y-y),2);
+            if (aDist == bDist) return 0;
+            else if (aDist < bDist) return 1;
+            else return -1;
         });
         showQueueOnce();
     }
@@ -244,8 +244,8 @@ Rabbit.Grid = function (level, setup, state)
     function showQueueOnce ()
     {
         if (toShowList.length) {
-	    var coord = toShowList.pop();
-	    showCell(coord.x, coord.y);
+            var coord = toShowList.pop();
+            showCell(coord.x, coord.y);
             if (carrotCount == _setups.carrotsPlaced) {
                 doWin(coord.x, coord.y);
             }
@@ -532,7 +532,7 @@ function addButtonEffects (elem, callback, sound)
             }
         }
         callback(event);
-    }, false);   
+    }, false);
 }
 
 
@@ -588,7 +588,7 @@ function refreshBestScore (level, score)
 }
 
 var carrotCountElem;
-function setCarrotCount (num) 
+function setCarrotCount (num)
 {
     carrotCount = num;
     carrotCountElem = carrotCountElem || document.getElementById("carrot_count");
@@ -630,7 +630,7 @@ function mouseCell (event)
     }
 }
 
-function animateCharacters () 
+function animateCharacters ()
 {
     animateFoxTail();
     animateFoxHead();
@@ -693,7 +693,7 @@ function animateFoxBlink()
     }, delay);
 }
 
-function animateRabbitArm () 
+function animateRabbitArm ()
 {
     var delay = Math.random() * 7000 + 7000;
     rabbitArmElem = rabbitArmElem || document.querySelector("#rabbit .arm");
@@ -710,7 +710,7 @@ function animateRabbitArm ()
             setTimeout(function() {clArm.add("raise");},     0);
             setTimeout(function() {clHead.add("chomp");},    750);
             setTimeout(function() {clHead.remove("chomp");}, 750+250);
-            setTimeout(function() {clHead.add("chomp");},    750+250+250); 
+            setTimeout(function() {clHead.add("chomp");},    750+250+250);
             setTimeout(function() {clHead.remove("chomp");}, 750+250+250+250);
             setTimeout(function() {clArm.remove("raise");},  750+250+250+250+250);
        }
@@ -742,7 +742,7 @@ function animateRabbitWhiskers ()
             setTimeout(function() {cl.add("twitch1");},    0);
             setTimeout(function() {cl.add("twitch2");},    150);
             setTimeout(function() {cl.remove("twitch2");}, 150+150);
-            setTimeout(function() {cl.remove("twitch1");}, 150+150+150); 
+            setTimeout(function() {cl.remove("twitch1");}, 150+150+150);
        }
         animateRabbitWhiskers();
     }, delay);
@@ -810,7 +810,7 @@ function quitGame (event)
 }
 
 var hintEnabled = true;
-function enableHints (b) 
+function enableHints (b)
 {
     if (b == hintEnabled) return;
     hintEnabled = b;
@@ -906,14 +906,14 @@ function restoreGameState ()
         }
     }
 
-    if (localStorage && localStorage.rrr_gameInProgress && 
+    if (localStorage && localStorage.rrr_gameInProgress &&
         (localStorage.rrr_gameInProgress == "true")) {
         try {
-	    gameInProgress = true;
-	    score      = +localStorage.rrr_score      || 0;
-	    time       = +localStorage.rrr_time       || 0;
-	    carrotCount = +localStorage.rrr_carrotCount   || 0;
-	    gameLevel   = +localStorage.rrr_gameLevel  || EASY;
+            gameInProgress = true;
+            score      = +localStorage.rrr_score      || 0;
+            time       = +localStorage.rrr_time       || 0;
+            carrotCount = +localStorage.rrr_carrotCount   || 0;
+            gameLevel   = +localStorage.rrr_gameLevel  || EASY;
             var gridSetup = JSON.parse(localStorage.rrr_gridSetup);
             var gridState = JSON.parse(localStorage.rrr_gridState);
             Rabbit.grid = new Rabbit.Grid(gameLevel, gridSetup, gridState);
@@ -924,7 +924,7 @@ function restoreGameState ()
     }
 
     if (undefined === Rabbit.grid) {
-	initGameState();
+        initGameState();
     }
 }
 
@@ -1006,7 +1006,7 @@ var quitConfirmElem, quitConfirmYesElem, quitConfirmNoElem;
 var easyElem, mediumElem, hardElem;
 var hintButtonElem, newGameButtonElem, playButtonElem, bestScoreElem;
 var gridElem;
-var foxElem, foxTailElem, foxHeadElem, foxEyesElem; 
+var foxElem, foxTailElem, foxHeadElem, foxEyesElem;
 var rabbitElem, rabbitHeadElem, rabbitEyesElem, rabbitWhiskersElem, rabbitArmElem;
 
 var themeSound, clickSound, hintSound, crunchSound, loseSound, winSound;
@@ -1016,7 +1016,7 @@ var themeSound, clickSound, hintSound, crunchSound, loseSound, winSound;
 var gameInProgress, score, time, carrotCount, gameLevel;
 var bestScores;
 
-// Game Settings 
+// Game Settings
 
 var useSounds, useHints;
 
@@ -1035,10 +1035,9 @@ restoreSettings();
 restoreGameState();
 initGetMessage();
 
-window.addEventListener("DOMContentLoaded", function (event) 
+window.addEventListener("DOMContentLoaded", function (event)
 {
     license_init("license", "mainpage");
-    initStaticStrings();
 
     titleScreen         = document.getElementById("title_screen");
     helpElem            = document.getElementById("help");
@@ -1074,6 +1073,8 @@ window.addEventListener("DOMContentLoaded", function (event)
     winSound    = new gamesound("audio.win");
     rabbitSound = new gamesound("audio.rabbit");
 
+    initStaticStrings();
+
     setTimeout(function() {
         if (gameInProgress) {
             startGame();
@@ -1095,7 +1096,7 @@ window.addEventListener("DOMContentLoaded", function (event)
     addButtonEffects(settings2ButtonElem, openDialogCallback.bind(undefined, settingsElem));
     addButtonEffects(newGameButtonElem, function (event) {
         if (gameInProgress) {
-            setPause(true);        
+            setPause(true);
             openDialogCallback(quitConfirmElem);
         }
         else {
@@ -1143,7 +1144,7 @@ window.addEventListener("DOMContentLoaded", function (event)
 }, false);
 
 var themeSound;
-window.addEventListener("load", function (event) 
+window.addEventListener("load", function (event)
 {
     if (useSounds) {
         themeSound.play();
