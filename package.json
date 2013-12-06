@@ -1,6 +1,6 @@
 {
   "name": "Rabbit",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Fun grid game where the rabbit finds and eats the carrots dodging the foxes.",
   "main": "app/index.html",
   "scripts": {
